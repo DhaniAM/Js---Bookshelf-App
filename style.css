@@ -59,18 +59,22 @@ header {
 }
 
 /* Middle */
-.middle h2{
+.middle-section h2{
 	font-size: 40px;
 }
 
-.middle p {
+.middle-section p {
 	font-size: 30px;
 	padding-top: 10px;
 	cursor: pointer;
 }
 
-.middle p:hover {
+.middle-section p:hover {
 	color: var(--color2);
+}
+
+.middle-section, .move-section, .remove-section, .add-section {
+	width: 500px;
 }
 
 /* Finished */
@@ -129,4 +133,117 @@ header {
 
 .book-title {
 	font-size: 20px;
+}
+
+
+/* hidden */
+
+.hidden {
+	display: none;
+}
+
+/* Adding Book section */
+/* Form */
+.add-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form-item {
+	display: flex;
+	flex-direction: column;
+	font-size: 30px;
+}
+
+.form-item input {
+	font-family: 'Arial Narrow', Arial, sans-serif;
+	width: 300px;
+	height: 30px;
+	padding: 5px;
+	font-size: 20px;
+}
+
+/* Is Finished button */
+
+.is-finished {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.is-finished-btn {
+	display: flex;
+	align-items: center;
+	background-color: white;
+	border: 1px solid grey;
+	border-radius: 50px;
+	width: 60px;
+	height: 30px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.circle-false {
+	position: relative;
+	left: 0px;
+	transition: all 0.3s;
+	margin: 5px;
+	border-radius: 50px;
+	width: 20px;
+	height: 20px;
+	background-color: #F85E5E;
+}
+.circle-true {
+	transition: all 0.3s;
+	position: relative;
+	left: 28px;
+	margin: 5px;
+	border-radius: 50px;
+	width: 20px;
+	height: 20px;
+	background-color: #5E64F8;
+}
+
+.is-finished-txt {
+	font-size: 18px;
+	padding-left: 5px;
+	font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Submit */
+
+.submit-btn, .save {
+	background-color: var(--color5);
+	font-size: 25px;
+	width: 200px;
+	padding: 10px;
+	margin-top: 10px;
+	border: 2px solid white;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.1s;
+}
+
+.submit-btn:hover, .save:hover {
+	background-color: var(--color1);
+}
+.submit-btn:active, .save:active {
+	background-color: var(--color2);
+	color: white;
+}
+
+/* Remove Book Section */
+.remove-section p {
+	font-size: 50px;
+}
+
+/* Move Book Section */
+.move-section p {
+	font-size: 50px;
+}
+
+.icon {
+	padding: 5px;
 }
