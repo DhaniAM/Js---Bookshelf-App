@@ -44,6 +44,8 @@ header {
 	align-items: center;
 }
 
+/* Unfinished */
+
 .unfinished-list {
 	background-image: url(img/2.jpg);
 	background-size: contain;
@@ -55,6 +57,23 @@ header {
 .unfinished-title {
 	font-size: 40px;
 }
+
+/* Middle */
+.middle h2{
+	font-size: 40px;
+}
+
+.middle p {
+	font-size: 30px;
+	padding-top: 10px;
+	cursor: pointer;
+}
+
+.middle p:hover {
+	color: var(--color2);
+}
+
+/* Finished */
 
 .finished-list {
 	background-image: url(img/3.jpg);
@@ -105,8 +124,9 @@ header {
 	border-top: 2px solid var(--stroke3);
 	border-bottom: 2px solid var(--stroke3);
 	border-left: 2px solid var(--stroke3);
+	color: black;
 }
 
-.title {
+.book-title {
 	font-size: 20px;
 }
