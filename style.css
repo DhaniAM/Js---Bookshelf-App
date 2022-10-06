@@ -4,6 +4,9 @@
 	--color3: #FCD688;
 	--color4: #EF9F72;
 	--color5: #BDD9AF;
+	--stroke1: #0B8388;
+	--stroke2: #AA090B;
+	--stroke3: #C1A200;
 }
 
 * {
@@ -43,8 +46,9 @@ header {
 
 .unfinished-list {
 	background-image: url(img/2.jpg);
-	width: 600px;
-	height: 600px;
+	background-size: contain;
+	width: 500px;
+	height: 500px;
 	color: white;
 }
 
@@ -54,11 +58,55 @@ header {
 
 .finished-list {
 	background-image: url(img/3.jpg);
-	width: 600px;
-	height: 600px;
+	background-size: contain;
+	width: 500px;
+	height: 500px;
 	color: white;
 }
 
 .finished-title {
 	font-size: 40px;
+}
+
+.book-list {
+	height: 100%;
+	width: 310px;
+	background-color: rgba(255, 255, 255, 0.5);
+	padding: 10px;
+	overflow-x: none;
+	overflow-y: auto;
+}
+
+.book {
+	width: 270px;
+	height: 50px;
+	border-top-left-radius: 20px;
+	margin-bottom: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+}
+
+.book-1 {
+	background-color: var(--color1);
+	border-top: 2px solid var(--stroke1);
+	border-bottom: 2px solid var(--stroke1);
+	border-left: 2px solid var(--stroke1);
+}
+.book-2 {
+	background-color: var(--color2);
+	border-top: 2px solid var(--stroke2);
+	border-bottom: 2px solid var(--stroke2);
+	border-left: 2px solid var(--stroke2);
+}
+.book-3 {
+	background-color: var(--color3);
+	border-top: 2px solid var(--stroke3);
+	border-bottom: 2px solid var(--stroke3);
+	border-left: 2px solid var(--stroke3);
+}
+
+.title {
+	font-size: 20px;
 }
