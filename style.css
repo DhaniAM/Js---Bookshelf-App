@@ -212,6 +212,12 @@ header {
 	font-family: 'Arial Narrow', Arial, sans-serif;
 }
 
+/* Buttons */
+.buttons {
+	display: flex;
+	justify-content: space-around;
+}
+
 /* Submit */
 
 .submit-btn, .save {
@@ -230,8 +236,28 @@ header {
 	background-color: var(--color1);
 }
 .submit-btn:active, .save:active {
+	background-color: var(--color3);
+}
+
+/* Cancel */
+.cancel-btn {
 	background-color: var(--color2);
+	font-size: 25px;
+	width: 200px;
+	padding: 10px;
+	margin-top: 10px;
+	border: 2px solid white;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.1s;
 	color: white;
+}
+
+.cancel-btn:hover {
+	background-color: var(--color4);
+}
+.cancel-btn:active {
+	background-color: var(--color1);
 }
 
 /* Remove Book Section */
