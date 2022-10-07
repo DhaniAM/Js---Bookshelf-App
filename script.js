@@ -24,6 +24,7 @@ const saveMoveBtn = document.querySelector(".save-btn-move");
 addBook.addEventListener("click", () => {
 	middleSection.classList.add("hidden");
 	addSection.classList.remove("hidden");
+	reseitIsFinishedState();
 });
 
 removeBook.addEventListener("click", () => {
@@ -38,27 +39,83 @@ moveBook.addEventListener("click", () => {
 
 
 // Add book section
+// toggle finished or not
+let isFinishedState = false;
 
 isFinishedBtn.addEventListener("click", () => {
 	toggleIsFinishedState();
 });
 
 addForm.addEventListener("submit", () => {
+	const bookId = Date.now();
+	const bookTitle = document.querySelector("#title").value;
+	const bookAuthor = document.querySelector("#author").value;
+	const bookYear = document.querySelector("#year").value;
+	const bookData = {
+		id: bookId,
+		title: bookTitle,
+		author: bookAuthor,
+		year: bookYear,
+		isFinished: getIsFinishedState(),
+	};
+	addToLocalStorage(bookData);
 	addSection.classList.add("hidden");
 	middleSection.classList.remove("hidden");
 });
 
+// Cancel btn
 cancelBtn.addEventListener("click", () => {
 	addSection.classList.add("hidden");
 	middleSection.classList.remove("hidden");
+	reseitIsFinishedState();
 });
 
+// return false if browser doesn't support localStorage
 function checkLocalStorage() {
-
+	return typeof (Storage) != 'undefined';
 }
+
+const unfinishedBookKey = "UNFINISHED_BOOK";
+const finishedBookKey = "FINISHED_BOOK";
+
+// Insert data to localStorage
+function addToLocalStorage(bookData) {
+	// get local storage first
+	let unfinishedBookList = [];
+	let finishedBookList = [];
+	if (getLocalStorage(unfinishedBookKey) !== null) {
+		unfinishedBookList = getLocalStorage(unfinishedBookKey);
+	}
+	if (getLocalStorage(finishedBookKey) !== null) {
+		finishedBookList = getLocalStorage(finishedBookKey);
+	}
+
+	// insert to list and save to storage
+	if (getIsFinishedState()) {
+		finishedBookList.push(bookData);
+		const finishedBookJson = JSON.stringify(finishedBookList);
+		localStorage.setItem(finishedBookKey, finishedBookJson);
+	} else {
+		unfinishedBookList.push(bookData);
+		const unfinishedBookJson = JSON.stringify(unfinishedBookList);
+		localStorage.setItem(unfinishedBookKey, unfinishedBookJson);
+	}
+}
+
+// storage value is array
+function getLocalStorage(key) {
+	if (localStorage.getItem(key) !== null) {
+		const JsonData = localStorage.getItem(key);
+		const parsedData = JSON.parse(JsonData);
+		return parsedData;
+	} else {
+		return null;
+	}
+}
+
 // Change is-finished button on and off in Add Book Menu
 function toggleIsFinishedState() {
-	let isFinishedState = false;
+
 	if (isFinishedState) {
 		isFinishedState = false;
 		isFinishedCircle.classList.remove("circle-true");
@@ -77,6 +134,15 @@ function getIsFinishedState() {
 		return true
 	} else {
 		return false;
+	}
+}
+
+// reset finished button
+function reseitIsFinishedState() {
+	isFinishedState = false;
+	isFinishedCircle.classList.remove("circle-true");
+	if (!isFinishedCircle.classList.contains("circle-false")) {
+		isFinishedCircle.classList.add("circle-false");
 	}
 }
 
