@@ -91,7 +91,7 @@ header {
 	font-size: 40px;
 }
 
-.book-list {
+.book-list-finished, .book-list-unfinished {
 	height: 100%;
 	width: 310px;
 	background-color: rgba(255, 255, 255, 0.5);
