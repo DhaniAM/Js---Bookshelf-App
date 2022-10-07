@@ -45,6 +45,7 @@ addBook.addEventListener("click", () => {
 removeBook.addEventListener("click", () => {
 	middleSection.classList.add("hidden");
 	removeSection.classList.remove("hidden");
+	displayTrashIcon();
 });
 
 moveBook.addEventListener("click", () => {
@@ -210,8 +211,27 @@ const saveRemoveBtn = document.querySelector(".save-btn-remove");
 saveRemoveBtn.addEventListener("click", () => {
 	removeSection.classList.add("hidden");
 	middleSection.classList.remove("hidden");
+	const deleteBtn = document.querySelectorAll(".delete-icon");
+	deleteBtn.forEach((item) => {
+		item.remove();
+	})
 });
 
+function displayTrashIcon() {
+	const books = document.querySelectorAll(".book-title");
+	
+	books.forEach((item) => {
+		const iconElement = document.createElement("span");
+		iconElement.classList.add("material-symbols-outlined");
+		iconElement.classList.add("delete-icon");
+		iconElement.textContent = "delete";
+		insertAfter(iconElement, item);	
+	});
+}
+
+function insertAfter(newNode, oldNode) {
+	oldNode.parentNode.insertBefore(newNode, oldNode.nextSibling);
+}
 
 
 // move section=======================================================

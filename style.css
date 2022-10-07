@@ -272,6 +272,13 @@ header {
 	font-size: 50px;
 }
 
+/* Delete icon */
 .delete-icon {
 	padding: 5px;
+	cursor: pointer;
+}
+
+.delete-icon:hover {
+	color: rgb(167, 3, 112);
+	font-size: 30px;
 }
