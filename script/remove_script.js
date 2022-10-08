@@ -3,6 +3,7 @@
 const removeSection = document.querySelector(".remove-section");
 const saveRemoveBtn = document.querySelector(".save-btn-remove");
 
+let selectedBookId = [];
 
 // Remove book section
 saveRemoveBtn.addEventListener("click", () => {
@@ -12,6 +13,7 @@ saveRemoveBtn.addEventListener("click", () => {
 	deleteBtn.forEach((item) => {
 		item.remove();
 	})
+	addStorageAfterDelete();
 })
 
 function displayTrashIcon() {
@@ -40,8 +42,18 @@ function canHighlightBook() {
 	const icons = grabTrashIcon();
 	icons.forEach((icon) => {
 		icon.addEventListener("click", () => {
-			const parent = icon.parentNode;
-			parent.classList.toggle("highlighted");
+			const book = icon.parentNode;
+			const bookId = book.classList[2];
+			book.classList.toggle("highlighted");
+			// if trash icon already highlighted, remove from array
+			if (selectedBookId.includes(bookId)) {
+				const index = selectedBookId.indexOf(bookId);
+				selectedBookId.splice(index, 1);
+				console.log(selectedBookId);
+			} else {
+				selectedBookId.push(bookId);
+				console.log(selectedBookId);
+			}
 		})
 	})
 }

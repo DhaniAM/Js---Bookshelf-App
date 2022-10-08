@@ -15,14 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (getLocalStorage(unfinishedBookKey) !== null) {
 			const unfinishedStorageData = getLocalStorage(unfinishedBookKey);
 			for (const [index, item] of unfinishedStorageData.entries()) {
-				const book = makeBook(item.title, item.author, item.year, index);
+				const book = makeBook(item.id, item.title, item.author, item.year, index);
 				displayBook(book, item.isFinished)
 			}
 		}
 		if (getLocalStorage(finishedBookKey) !== null) {
 			const finishedStorageData = getLocalStorage(finishedBookKey)
 			for (const [index, item] of finishedStorageData.entries()) {
-				const book = makeBook(item.title, item.author, item.year, index);
+				const book = makeBook(item.id, item.title, item.author, item.year, index);
 				displayBook(book, item.isFinished)
 			}
 			
@@ -50,11 +50,12 @@ moveBook.addEventListener("click", () => {
 	moveSection.classList.remove("hidden");
 });
 
-function makeBook(title, author, year, index) {
+function makeBook(id, title, author, year, index) {
 	const color = (index % 3) + 1;
 	const book = document.createElement("div");
 	book.classList.add("book");
 	book.classList.add(`book-${color}`);
+	book.classList.add(id);
 
 	const bookTitle = document.createElement("p");
 	bookTitle.classList.add("book-title");

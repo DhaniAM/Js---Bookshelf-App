@@ -37,3 +37,28 @@ function getLocalStorage(key) {
 	}
 }
 
+function addStorageAfterDelete() {
+	const finishedBook = getLocalStorage(finishedBookKey);
+	const unfinishedBook = getLocalStorage(unfinishedBookKey);
+
+	let newFinished = [];
+	let newUnfinished = [];
+
+	selectedBookId.forEach((selectedBook) => {
+		finishedBook.forEach((savedBook) => {
+			if (selectedBook == savedBook) {
+				newFinished.push(selectedBook);
+			}
+		}) 
+	})
+	selectedBookId.forEach((selectedBook) => {
+		unfinishedBook.forEach((savedBook) => {
+			if (selectedBook == savedBook) {
+				newUnfinished.push(selectedBook);
+			}
+		}) 
+	})
+
+	localStorage.setItem(finishedBookKey, newFinished);
+	localStorage.setItem(unfinishedBookKey, newUnfinished);
+}
