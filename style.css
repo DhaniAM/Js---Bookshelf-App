@@ -282,3 +282,8 @@ header {
 	color: rgb(167, 3, 112);
 	font-size: 30px;
 }
+
+/* after click the trash icon */
+.highlighted {
+	opacity: 0.5;
+}
