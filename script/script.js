@@ -7,22 +7,23 @@ const moveBook = document.querySelector(".move-book");
 const unfinishedBookKey = "UNFINISHED_BOOK";
 const finishedBookKey = "FINISHED_BOOK";
 
+// Load storage on page load
 document.addEventListener("DOMContentLoaded", () => {
 	if (!checkLocalStorage()) {
-		console.log("Browser does not support local storage");
+		alert("Your browser does not support local storage");
 	} else {
 		console.log('running');
 		if (getLocalStorage(unfinishedBookKey) !== null) {
 			const unfinishedStorageData = getLocalStorage(unfinishedBookKey);
 			for (const [index, item] of unfinishedStorageData.entries()) {
 				const book = makeBook(item.id, item.title, item.author, item.year, index);
-				displayBook(book, item.isFinished)
+				displayBook(book, item.isFinished)	
 			}
 		}
 		if (getLocalStorage(finishedBookKey) !== null) {
 			const finishedStorageData = getLocalStorage(finishedBookKey)
 			for (const [index, item] of finishedStorageData.entries()) {
-				const book = makeBook(item.id, item.title, item.author, item.year, index);
+				let book = makeBook(item.id, item.title, item.author, item.year, index);
 				displayBook(book, item.isFinished)
 			}
 			
@@ -30,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-// Middle Initial State Section=============================================
 addBook.addEventListener("click", () => {
 	middleSection.classList.add("hidden");
 	addSection.classList.remove("hidden");
@@ -41,13 +41,15 @@ removeBook.addEventListener("click", () => {
 	middleSection.classList.add("hidden");
 	removeSection.classList.remove("hidden");
 	displayTrashIcon();
-	grabTrashIcon();
 	canHighlightBook();
 });
 
 moveBook.addEventListener("click", () => {
 	middleSection.classList.add("hidden");
 	moveSection.classList.remove("hidden");
+	displayMoveIcon();
+	canMoveBook();
+
 });
 
 function makeBook(id, title, author, year, index) {

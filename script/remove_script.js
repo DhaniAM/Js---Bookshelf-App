@@ -9,10 +9,7 @@ let selectedBookId = [];
 saveRemoveBtn.addEventListener("click", () => {
 	removeSection.classList.add("hidden");
 	middleSection.classList.remove("hidden");
-	const deleteBtn = document.querySelectorAll(".delete-icon");
-	deleteBtn.forEach((item) => {
-		item.remove();
-	})
+	removeTrashIcon();
 	addStorageAfterDelete();
 })
 
@@ -29,23 +26,25 @@ function displayTrashIcon() {
 	});
 }
 
+function removeTrashIcon() {
+	const deleteBtn = document.querySelectorAll(".delete-icon");
+	deleteBtn.forEach((item) => {
+		item.remove();
+	})
+}
+
 function insertAfter(newNode, oldNode) {
 	oldNode.parentNode.insertBefore(newNode, oldNode.nextSibling);
 }
 
-function grabTrashIcon() {
-	const icon = document.querySelectorAll(".delete-icon");
-	return icon;
-}
-
 function canHighlightBook() {
-	const icons = grabTrashIcon();
+	const icons = document.querySelectorAll(".delete-icon");
 	icons.forEach((icon) => {
 		icon.addEventListener("click", () => {
 			const book = icon.parentNode;
 			const bookId = book.classList[2];
 			book.classList.toggle("highlighted");
-			// if trash icon already highlighted, remove from array
+			// if trash icon already highlighted, remove from selectedBookId
 			if (selectedBookId.includes(bookId)) {
 				const index = selectedBookId.indexOf(bookId);
 				selectedBookId.splice(index, 1);
@@ -56,4 +55,11 @@ function canHighlightBook() {
 			}
 		})
 	})
+}
+
+function updateBookList() {
+	const books = document.querySelectorAll(".highlighted");
+	books.forEach(element => {
+		element.remove();
+	});
 }

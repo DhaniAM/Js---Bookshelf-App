@@ -56,9 +56,14 @@ header {
 
 .unfinished-title {
 	font-size: 40px;
+	padding: 10px;
 }
 
 /* Middle */
+.middle-section {
+	padding: 20px;
+}
+
 .middle-section h2{
 	font-size: 40px;
 }
@@ -89,6 +94,7 @@ header {
 
 .finished-title {
 	font-size: 40px;
+	padding: 10px;
 }
 
 .book-list-finished, .book-list-unfinished {
@@ -272,13 +278,13 @@ header {
 	font-size: 50px;
 }
 
-/* Delete icon */
-.delete-icon {
+/* Delete icon, Move ico, */
+.delete-icon, .move-icon {
 	padding: 5px;
 	cursor: pointer;
 }
 
-.delete-icon:hover {
+.delete-icon:hover, .move-icon:hover {
 	color: rgb(167, 3, 112);
 	font-size: 30px;
 }
@@ -286,4 +292,37 @@ header {
 /* after click the trash icon */
 .highlighted {
 	opacity: 0.5;
+}
+
+
+/* Responsive */
+
+@media only screen and (max-width: 1300px) {
+	.content {
+		width: 95vw;
+		height: 98vh;
+	}
+
+	.unfinished-list {
+		width: 300px;
+	}
+
+	.finished-list {
+		width: 300px;
+	}
+
+	.book-list-finished, .book-list-unfinished {
+		width: 260px;
+	}
+
+	.book {
+		width: 220px;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	.content {
+		flex-wrap: wrap;
+		height: fit-content;
+	}
 }
