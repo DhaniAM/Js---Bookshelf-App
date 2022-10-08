@@ -12,13 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (!checkLocalStorage()) {
 		alert("Your browser does not support local storage");
 	} else {
-		console.log('running');
 		if (getLocalStorage(unfinishedBookKey) !== null) {
 			const unfinishedStorageData = getLocalStorage(unfinishedBookKey);
 			for (const [index, item] of unfinishedStorageData.entries()) {
 				const book = makeBook(item.id, item.title, item.author, item.year, index);
-				displayBook(book, item.isFinished)	
+				displayBook(book, item.isFinished)
 			}
+		} else {
+			localStorage.setItem(unfinishedBookKey, JSON.stringify([]));
 		}
 		if (getLocalStorage(finishedBookKey) !== null) {
 			const finishedStorageData = getLocalStorage(finishedBookKey)
@@ -26,7 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				let book = makeBook(item.id, item.title, item.author, item.year, index);
 				displayBook(book, item.isFinished)
 			}
-			
+		} else {
+			localStorage.setItem(finishedBookKey, JSON.stringify([]));
 		}
 	}
 });

@@ -34,15 +34,19 @@ function removeMoveIcon() {
 
 function canMoveBook() {
 	const moveIcon = document.querySelectorAll(".move-icon");
-	const finishedBook = getLocalStorage(finishedBookKey);
-	const unfinishedBook = getLocalStorage(unfinishedBookKey);
+	let finishedBook;
+	let unfinishedBook;
 
-	if (finishedBook == null) {
+	if (getLocalStorage(finishedBookKey) == null) {
 		localStorage.setItem(finishedBookKey, JSON.stringify([]));
+	} else {
+		finishedBook = getLocalStorage(finishedBookKey);
 	}
 
-	if (unfinishedBook == null) {
+	if (getLocalStorage(unfinishedBookKey) == null) {
 		localStorage.setItem(unfinishedBookKey, JSON.stringify([]));
+	} else {
+		unfinishedBook = getLocalStorage(unfinishedBookKey);
 	}
 
 	let finishedId = [];
