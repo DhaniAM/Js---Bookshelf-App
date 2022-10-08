@@ -37,8 +37,23 @@ function canMoveBook() {
 	const finishedBook = getLocalStorage(finishedBookKey);
 	const unfinishedBook = getLocalStorage(unfinishedBookKey);
 
-	let finishedId = finishedBook.map((item) => item.id);
-	let unfinishedId = unfinishedBook.map((item) => item.id);
+	if (finishedBook == null) {
+		localStorage.setItem(finishedBookKey, JSON.stringify([]));
+	}
+
+	if (unfinishedBook == null) {
+		localStorage.setItem(unfinishedBookKey, JSON.stringify([]));
+	}
+
+	let finishedId = [];
+	let unfinishedId = [];
+
+	if (finishedBook !== null) {
+		finishedId = finishedBook.map((item) => item.id);
+	}
+	if (unfinishedBook !== null) {
+		unfinishedId = unfinishedBook.map((item) => item.id);
+	}
 
 	moveIcon.forEach((icon) => {
 		icon.addEventListener(("click"), () => {
@@ -46,7 +61,7 @@ function canMoveBook() {
 			let bookId = book.classList[2];
 			let bookIdInt = parseInt(bookId);
 			// if book in finished shelf
-			if(finishedId.includes(bookIdInt)) {
+			if (finishedId.includes(bookIdInt)) {
 				unfinishedList.appendChild(book);
 				let index = finishedId.indexOf(bookIdInt);
 				// remove from finishedId list
